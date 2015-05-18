@@ -3,8 +3,8 @@
 angular.module('critiqueApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      'title': 'TV',
+      'link': '/tv'
     }];
 
     $scope.isCollapsed = true;
