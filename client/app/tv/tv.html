@@ -4,12 +4,5 @@
   <label for="newShow">Add new show</label>
   <input type="text" name="newShow" ng-model="newShow">
   <button ng-click="addShow()">Add</button>
-  <li ng-repeat="show in tvshows">
-    <ul>
-      <h2>{{ show.name }}</h2>
-      <li ng-repeat="comment in show.comments">
-        {{ comment }}
-      </li>
-    </ul>
-  </li>
+  <show-item class="showitem" ng-repeat="show in tvshows"></show-item>
 </div>
