@@ -5,11 +5,32 @@ angular.module('critiqueApp')
     return {
       templateUrl: 'app/showItem/showItem.html',
       restrict: 'E',
-      link: function (scope, element, attrs) {
+      link: function (scope, element) {
+
+        /*
+         * Scope
+         */
+
         scope.showCommentbox = false;
+
         scope.toggleInput = function() {
           scope.showCommentbox = !scope.showCommentbox;
-        }
+        };
+
+        /*
+         * Functions
+         */
+
+        var sendComment = function() {
+          console.log('Sending comment: ' + element.find('input').val());
+        };
+
+        /*
+         * Listeners
+         */
+
+        element.find('button').on('click', sendComment);
+
       }
     };
   });
