@@ -1,0 +1,25 @@
+.showitem {
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .comment-line {
+    padding-left: 50px;
+    font-size: small;
+
+    a {
+      
+    }
+  }
+
+  .addcomment {
+    font-size: small;
+    padding: 15px 10px 10px 60px;
+
+    input {
+      padding: 10px;
+      min-width: 50%;
+    }
+
+  }
+}
