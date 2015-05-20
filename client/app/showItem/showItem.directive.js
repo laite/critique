@@ -9,7 +9,7 @@ angular.module('critiqueApp')
 
         var resetComments = function() {
           // Load the comments initially from the database
-          scope.comments = Comment.query();
+          scope.comments = Comment.query({ by: 'show', commentId: scope.show._id });
 
           // Toggles the visibility of the input box & button
           scope.showCommentbox = false;

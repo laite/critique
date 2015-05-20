@@ -54,6 +54,15 @@ exports.destroy = function(req, res) {
   });
 };
 
+// Get comments by Show
+exports.findbyshow = function(req, res) {
+  Comment.find({ 'showId': req.params.id }, function (err, comment) {
+    if(err) { return handleError(res, err); }
+    if(!comment) { return res.send(404); }
+    return res.json(comment);
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }
