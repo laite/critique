@@ -55,20 +55,6 @@ exports.destroy = function(req, res) {
 };
 
 
-// Creates a new comment for the show
-exports.addComment = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Tvshow.findById(req.params.id, function (err, tvshow) {
-    if (err) { return handleError(res, err); }
-    if(!tvshow) { return res.send(404); }
-    tvshow.comments.push({ 'comment': req.body.comment, 'userId': req.body.user });
-    tvshow.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, tvshow);
-    });
-  });
-};
-
 function handleError(res, err) {
   return res.send(500, err);
 }

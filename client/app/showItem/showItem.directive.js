@@ -13,6 +13,10 @@ angular.module('critiqueApp')
 
         scope.showCommentbox = false;
 
+        scope.comments = Comment.query(function() {
+          console.log(scope.comments);
+        });
+
         scope.toggleInput = function() {
           scope.showCommentbox = !scope.showCommentbox;
         };
@@ -21,16 +25,20 @@ angular.module('critiqueApp')
          * Functions
          */
 
-        var sendComment = function() {
-          var newComment = new Comment({ id: scope.show._id, comment: 'Test', userId: Auth.getCurrentUser()._id });
+        scope.sendComment = function() {
+
+          var commentText = element.find('input').val();
+          var showId = scope.show._id;
+          var userId = Auth.getCurrentUser()._id;
+
+          var newComment = new Comment({ showId: showId, comment: commentText, userId: userId });
           newComment.$save();
         };
 
-        /*
-         * Listeners
-         */
-
-        element.find('button').on('click', sendComment);
+        scope.removeComment = function(e) {
+          console.log(e);
+          // var commentId = 
+        };
 
       }
     };
