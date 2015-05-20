@@ -7,7 +7,7 @@
   <a href ng-hide="showCommentbox" ng-click="toggleInput()">Add comment</a>
   <div class="commentbox" ng-show="showCommentbox">
     <form ng-submit="sendComment()">
-    <input placeholder="Send comment by pressing Enter">
+    <input set-focus-from="showCommentbox" placeholder="Send comment by pressing Enter">
   </form>
   </div>
 </section>

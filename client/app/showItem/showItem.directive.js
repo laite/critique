@@ -21,7 +21,6 @@ angular.module('critiqueApp')
           scope.showCommentbox = !scope.showCommentbox;
         };
 
-        scope.setFocus = function() { console.log('focus'); }
         scope.sendComment = function() {
 
           var commentText = element.find('input').val();
