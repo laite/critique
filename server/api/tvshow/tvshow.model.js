@@ -5,8 +5,8 @@ var mongoose = require('mongoose'),
 
 var TvshowSchema = new Schema({
   name: String,
-  info: String,
-  active: Boolean
+  description: String,
+  comments: [Schema.Types.Mixed] // { comment: '', userId: '' }
 });
 
 module.exports = mongoose.model('Tvshow', TvshowSchema);

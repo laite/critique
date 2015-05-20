@@ -1,5 +1,6 @@
 <h2>{{ show.name }}</h2>
 <p>{{ show.description }}</p>
+<span ng-repeat="comment in show.comments">{{ comment.comment }}</span>
 <a href="#" ng-hide="showCommentbox" ng-click="toggleInput()">Add comment</a>
 <div class="commentbox" ng-show="showCommentbox">
   <input>

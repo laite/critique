@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('critiqueApp')
-  .directive('showItem', function () {
+  .directive('showItem', ['comment', 'Auth', function (Comment, Auth) {
     return {
       templateUrl: 'app/showItem/showItem.html',
       restrict: 'E',
@@ -22,7 +22,8 @@ angular.module('critiqueApp')
          */
 
         var sendComment = function() {
-          console.log('Sending comment: ' + element.find('input').val());
+          var newComment = new Comment({ id: scope.show._id, comment: 'Test', userId: Auth.getCurrentUser()._id });
+          newComment.$save();
         };
 
         /*
@@ -33,4 +34,4 @@ angular.module('critiqueApp')
 
       }
     };
-  });
+  }]);
