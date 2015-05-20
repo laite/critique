@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('critiqueApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $http) {
     $scope.menu = [{
       'title': 'TV',
       'link': '/tv'
@@ -11,6 +11,22 @@ angular.module('critiqueApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.currentUserName = Auth.getCurrentUser().name;
+
+    $scope.ToggleNameBox = function() {
+      $scope.changeNameBoxVisible = !$scope.changeNameBoxVisible;
+    };
+
+    $scope.changeName = function() {
+      var id = Auth.getCurrentUser()._id;
+      var newName = $scope.navbarNewName;
+      console.log(newName);
+
+      $http.put('/api/users/' + id + '/name', { newName: newName }).success(function() {
+        $scope.changeNameBoxVisible = false;
+        $scope.currentUserName = newName;
+      });
+    };
 
     $scope.logout = function() {
       Auth.logout();

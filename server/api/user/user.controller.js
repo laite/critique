@@ -59,6 +59,22 @@ exports.destroy = function(req, res) {
 };
 
 /**
+ * Change a users name
+ */
+exports.changeName = function(req, res, next) {
+  var userId = req.user._id;
+  var newName = String(req.body.newName);
+
+  User.findById(userId, function (err, user) {
+      user.name = newName;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+  });
+};
+
+/**
  * Change a users password
  */
 exports.changePassword = function(req, res, next) {

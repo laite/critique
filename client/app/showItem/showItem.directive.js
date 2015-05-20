@@ -21,6 +21,9 @@ angular.module('critiqueApp')
           scope.showCommentbox = !scope.showCommentbox;
         };
 
+        // TODO: Should this logic be moved to controller (hint: yes) //
+
+        /* Save a new comment to the db */
         scope.sendComment = function() {
 
           var commentText = element.find('input').val();
@@ -29,8 +32,11 @@ angular.module('critiqueApp')
 
           var newComment = new Comment({ showId: showId, comment: commentText, userId: userId });
           newComment.$save(resetComments);
+
+          element.find('input').val('');
         };
 
+        /* Remove existing comment from db */
         scope.removeComment = function(comment) {
 
           var commentId = comment._id;
