@@ -7,23 +7,15 @@ angular.module('critiqueApp')
       restrict: 'E',
       link: function (scope, element) {
 
-        /*
-         * Scope
-         */
+        // Load the comments initially from the database
+        scope.comments = Comment.query();
 
+        // Toggles the visibility of the input box & button
         scope.showCommentbox = false;
-
-        scope.comments = Comment.query(function() {
-          console.log(scope.comments);
-        });
 
         scope.toggleInput = function() {
           scope.showCommentbox = !scope.showCommentbox;
         };
-
-        /*
-         * Functions
-         */
 
         scope.sendComment = function() {
 
@@ -35,9 +27,13 @@ angular.module('critiqueApp')
           newComment.$save();
         };
 
-        scope.removeComment = function(e) {
-          console.log(e);
-          // var commentId = 
+        scope.removeComment = function(comment) {
+
+          var commentId = comment._id;
+
+          var removableComment = Comment.get({ commentId: commentId }, function() {
+            removableComment.$delete({ commentId: commentId });
+          });
         };
 
       }

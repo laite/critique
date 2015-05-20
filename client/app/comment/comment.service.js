@@ -3,6 +3,6 @@
 angular.module('critiqueApp')
   .factory('comment', ['$resource', function ($resource) {
 
-    return $resource('api/comments', {}, {});
+    return $resource('api/comments/:commentId', { commentId: '@commentId' }, {});
 
   }]);
