@@ -6,14 +6,24 @@ describe('Filter: personify', function () {
   beforeEach(module('critiqueApp'));
 
   // initialize a new instance of the filter before each test
-  var personify;
-  beforeEach(inject(function ($filter) {
-    personify = $filter('personify');
-  }));
+  var personify, $httpBackend;
 
-  it('should return the input prefixed with "personify filter:"', function () {
-    var text = 'angularjs';
-    expect(personify(text)).toBe('personify filter: ' + text);
+  beforeEach(function () {
+
+    inject(function (_$httpBackend_, $filter) {
+
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('api/users/names')
+        .respond([{ _id: '1', name: 'User'}]);
+
+      personify = $filter('personify');
+    });
+
+  });
+
+  it('should personify User', function () {
+    $httpBackend.flush();
+    expect(personify(1)).toBe('User');
   });
 
 });

@@ -6,13 +6,14 @@ angular.module('critiqueApp')
     var userNames = {};
 
     function _refreshNames() {
-      return $http.get('api/users/names')
+      $http
+        .get('api/users/names')
         .success(function(data) {
           userNames = {};
           for (var i in data) {
             userNames[data[i]._id] = data[i].name;
           }
-      });
+        });
     }
 
     _refreshNames();
