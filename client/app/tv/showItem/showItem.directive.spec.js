@@ -4,11 +4,15 @@ describe('Directive: showItem', function () {
 
   // load the directive's module and view
   beforeEach(module('critiqueApp'));
-  beforeEach(module('app/showItem/showItem.html'));
+  beforeEach(module('app/tv/showItem/showItem.html'));
 
-  var element, scope;
+  var element, scope, $httpBackend;
 
-  beforeEach(inject(function ($rootScope) {
+  beforeEach(inject(function (_$httpBackend_, $rootScope) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('api/comments/show')
+      .respond([{showId: '1', comment:'Test Comment', userId: '1', _id: '1', timeStamp: '2015-05-20T08:48:42.725Z'}]);
+
     scope = $rootScope.$new();
 
     scope.show = { name: 'Luther' };
