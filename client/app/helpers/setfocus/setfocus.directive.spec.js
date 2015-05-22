@@ -5,16 +5,16 @@ describe('Directive: setfocus', function () {
   // load the directive's module
   beforeEach(module('critiqueApp'));
 
-  var element,
-    scope;
+  var element, scope;
 
   beforeEach(inject(function ($rootScope) {
     scope = $rootScope.$new();
+    scope.focusMock = true;
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<setfocus></setfocus>');
+    element = angular.element('<input set-focus-from="focusMock">');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the setfocus directive');
+    expect(element.isolateScope().focusValue).toBe(true);
   }));
 });
