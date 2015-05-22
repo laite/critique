@@ -10,6 +10,7 @@ describe('Directive: showItem', function () {
 
   beforeEach(inject(function (_$httpBackend_, $rootScope) {
     $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('api/users/names').respond([{ _id: '1', name: 'User'}]);
     $httpBackend.expectGET('api/comments/show')
       .respond([{showId: '1', comment:'Test Comment', userId: '1', _id: '1', timeStamp: '2015-05-20T08:48:42.725Z'}]);
 
