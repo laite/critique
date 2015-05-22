@@ -110,6 +110,18 @@ exports.me = function(req, res, next) {
 };
 
 /**
+ * Get userlist id:name
+ * restriction: none
+ */
+
+exports.names = function(req, res) {
+  User.find({}, 'name', function (err, users) {
+    if(err) return res.send(500, err);
+    res.json(200, users);
+  });
+};
+
+/**
  * Authentication callback
  */
 exports.authCallback = function(req, res, next) {
