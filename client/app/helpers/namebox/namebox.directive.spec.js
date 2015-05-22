@@ -8,14 +8,28 @@ describe('Directive: namebox', function () {
 
   var element, scope;
 
-  beforeEach(inject(function ($rootScope) {
-    scope = $rootScope.$new();
-  }));
+  beforeEach(function() {
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<namebox></namebox>');
+    var mockAuth = {
+      getCurrentUser: function() {
+        return { name: 'User' };
+      }
+    };
+
+    module(function($provide) {
+      $provide.value('Auth', mockAuth);
+    });
+
+    inject(function ($rootScope) {
+      scope = $rootScope.$new();
+      scope.currentUserName = 'User';
+    });
+  });
+
+  it('should show current user name', inject(function ($compile) {
+    element = angular.element('<li name-box></li>');
     element = $compile(element)(scope);
     scope.$apply();
-    expect(element.text()).toBe('this is the namebox directive');
+    expect(element.find('a').html()).toBe('User');
   }));
 });
