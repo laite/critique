@@ -11,12 +11,7 @@
       <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
       <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
       <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-      <li ng-show="isLoggedIn()">
-        <a href ng-bind="currentUserName" ng-hide="changeNameBoxVisible" id="navbar-user-name" ng-click="ToggleNameBox()"></a>
-        <form ng-show="changeNameBoxVisible" ng-submit="changeName()">
-          <input ng-model="navbarNewName" set-focus-from="changeNameBoxVisible" placeholder="Type a new name for you">
-        </form>
-      </li>
+      <li name-box ng-show="isLoggedIn()"></li>
       <li ng-show="isLoggedIn() && !changeNameBoxVisible" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
     </ul>
   </div>

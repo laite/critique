@@ -3,7 +3,7 @@
 angular.module('critiqueApp')
   .directive('showItem', ['comment', 'Auth', function (Comment, Auth) {
     return {
-      templateUrl: 'app/showItem/showItem.html',
+      templateUrl: 'app/tv/showItem/showItem.html',
       restrict: 'E',
       link: function (scope, element) {
 
