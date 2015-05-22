@@ -1,0 +1,4 @@
+<a href ng-bind="currentUserName" ng-hide="changeNameBoxVisible" id="navbar-user-name" ng-click="ToggleNameBox()"></a>
+<form ng-show="changeNameBoxVisible" ng-submit="changeName()">
+  <input ng-model="navbarNewName" set-focus-from="changeNameBoxVisible" placeholder="Type a new name for you">
+</form>
