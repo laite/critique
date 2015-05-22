@@ -1,7 +1,7 @@
 <h2>{{ show.name }}</h2>
 <p>{{ show.description }}</p>
 
-<div class="comment-line" ng-repeat="comment in comments">{{ comment.comment }} <a href ng-click="removeComment(comment)">(remove)</a></div>
+<div class="comment-line" ng-repeat="comment in comments">{{ comment.userId | personify }} {{ comment.comment }} <a href ng-click="removeComment(comment)">(remove)</a></div>
 
 <section class="addcomment">
   <a href ng-hide="showCommentbox" ng-click="toggleInput()">Add comment</a>
