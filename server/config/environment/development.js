@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/critique-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };
