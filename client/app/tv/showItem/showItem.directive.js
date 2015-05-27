@@ -23,7 +23,9 @@ angular.module('critiqueApp')
           scope.showCommentbox = !scope.showCommentbox;
         };
 
-        // TODO: Should this logic be moved to controller (hint: yes) //
+        scope.isOwnComment = function(userId) {
+          return (userId === Auth.getCurrentUser()._id);
+        };
 
         /* Save a new comment to the db */
         scope.sendComment = function() {
