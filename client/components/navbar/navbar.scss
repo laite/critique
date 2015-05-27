@@ -27,7 +27,7 @@
   }
 
   ul.navbar-links {
-    margin-top: 15px;
+    display: inline-block;
   }
 
   .navbar-right {
@@ -35,9 +35,10 @@
   }
 
   .navbar-brand {
+    display: block;
     color: $white;
     font-size: large;
     font-weight: bold;
-    margin-right: 30px;
+    margin-bottom: 30px;
   }
 }
