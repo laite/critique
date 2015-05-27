@@ -1,7 +1,7 @@
 .navbar {
 
   background: $light-gray;
-  padding: 25px;
+  padding: 15px 25px;
 
   a {
     color: $white;
@@ -13,17 +13,21 @@
   }
 
   a.active {
-    font-weight: bold;
-    border-bottom: solid 3px $white;
+    border-bottom: solid 1px $white;
   }
 
-  ul {
-    display: inline-block;
+  ul.nav {
+
+    margin: 0;
+    padding: 0;
 
     li {
       display: inline;
     }
+  }
 
+  ul.navbar-links {
+    margin-top: 15px;
   }
 
   .navbar-right {
@@ -31,7 +35,7 @@
   }
 
   .navbar-brand {
-    color: $brand;
+    color: $white;
     font-size: large;
     font-weight: bold;
     margin-right: 30px;
