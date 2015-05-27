@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('critiqueApp')
-  .directive('showItem', ['comment', 'Auth', 'userlist', function (Comment, Auth, Userlist) {
+  .directive('showItem', ['comment', 'Auth', function (Comment, Auth) {
     return {
       templateUrl: 'app/tv/showItem/showItem.html',
       restrict: 'E',
@@ -13,8 +13,6 @@ angular.module('critiqueApp')
 
           // Toggles the visibility of the input box & button
           scope.showCommentbox = false;
-
-          scope.setName = Userlist.findName;
         };
 
         resetComments();

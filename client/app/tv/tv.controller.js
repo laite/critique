@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('critiqueApp')
-  .controller('TVCtrl', function ($scope, $http) {
+  .controller('TVCtrl', ['$scope', '$http', 'userlist', function ($scope, $http, Userlist) {
     $scope.tvshows = [];
+
+    Userlist.refreshNames();
 
     $http.get('/api/tvshows').success(function(tvshows) {
       $scope.tvshows = tvshows;
@@ -19,4 +21,4 @@ angular.module('critiqueApp')
     $scope.deleteShow = function(tvshow) {
       $http.delete('/api/tvshows/' + tvshow._id);
     };
-  });
+  }]);

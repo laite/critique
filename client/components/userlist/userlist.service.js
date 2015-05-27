@@ -10,13 +10,11 @@ angular.module('critiqueApp')
         .get('api/users/names')
         .success(function(data) {
           userNames = {};
-          for (var i in data) {
-            userNames[data[i]._id] = data[i].name;
-          }
+          angular.forEach(data, function(item) {
+            userNames[item._id] = item.name;
+          });
         });
     }
-
-    _refreshNames();
 
     // Public API here
     return {
