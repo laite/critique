@@ -8,8 +8,8 @@ angular.module('critiqueApp')
       link: function (scope, element) {
 
         var resetComments = function() {
-          // Load the comments initially from the database
-          scope.comments = Comment.query({ by: 'show', id: scope.show._id });
+          // Load the comments
+          scope.comments = Comment.getComments(scope.show._id);
 
           // Toggles the visibility of the input box & button
           scope.showCommentbox = false;
@@ -34,8 +34,9 @@ angular.module('critiqueApp')
           var showId = scope.show._id;
           var userId = Auth.getCurrentUser()._id;
 
-          var newComment = new Comment({ showId: showId, comment: commentText, userId: userId });
-          newComment.$save(resetComments);
+          Comment
+            .saveNew({ showId: showId, comment: commentText, userId: userId })
+            .then(resetComments);
 
           element.find('input').val('');
         };
@@ -43,11 +44,10 @@ angular.module('critiqueApp')
         /* Remove existing comment from db */
         scope.removeComment = function(comment) {
 
-          var commentId = comment._id;
+          Comment
+            .removeComment(comment._id)
+            .then(resetComments);
 
-          var removableComment = Comment.get({ id: commentId }, function() {
-            removableComment.$delete({ id: commentId }, resetComments);
-          });
         };
 
       }
