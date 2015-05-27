@@ -1,5 +1,22 @@
 .navbar {
 
+  background: $light-gray;
+  padding: 25px;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a.active {
+    font-weight: bold;
+    border-bottom: solid 3px $white;
+  }
+
   ul {
     display: inline-block;
 
@@ -9,4 +26,14 @@
 
   }
 
+  .navbar-right {
+    float: right;
+  }
+
+  .navbar-brand {
+    color: $brand;
+    font-size: large;
+    font-weight: bold;
+    margin-right: 30px;
+  }
 }

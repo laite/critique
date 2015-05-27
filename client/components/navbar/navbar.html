@@ -1,8 +1,10 @@
 <div class="navbar" ng-controller="NavbarCtrl">
-    <a href="/" class="navbar-brand">critique</a>
     <ul class="nav navbar-nav">
+      <li>
+        <a href="/" class="navbar-brand">Critique.city</a>
+      </li>
       <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-        <a ng-href="{{item.link}}">{{item.title}}</a>
+        <a ng-class="{active: isActive('/tv')}" ng-href="{{item.link}}">{{item.title}}</a>
       </li>
       <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
     </ul>

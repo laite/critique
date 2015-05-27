@@ -1,8 +1,8 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="col-md-12">
+<main>
   <label for="newShow">Add new show</label>
   <input type="text" name="newShow" ng-model="newShow">
   <button ng-click="addShow()">Add</button>
   <show-item class="showitem" ng-repeat="show in tvshows"></show-item>
-</div>
+</main>
