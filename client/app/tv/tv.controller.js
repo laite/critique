@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('critiqueApp')
-  .controller('TVCtrl', ['$scope', '$http', 'userlist', function ($scope, $http, Userlist) {
+  .controller('TVCtrl', ['$scope', '$http', 'userlist', 'Auth', function ($scope, $http, Userlist, Auth) {
+
     $scope.tvshows = [];
+    $scope.isAdmin = Auth.isAdmin;
 
     $scope.refreshView = function() {
       $http.get('/api/tvshows').success(function(tvshows) {

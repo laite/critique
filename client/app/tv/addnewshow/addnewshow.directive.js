@@ -15,13 +15,10 @@ angular.module('critiqueApp')
           $http.post('/api/tvshows', { name: scope.newShow });
           scope.newShow = '';
 
-          // Refresh the tvshowlist on the tvcontroller
+          // Refresh the tvshow-list on the tvcontroller
           scope.refreshView();
         };
 
-        scope.deleteShow = function(tvshow) {
-          // $http.delete('/api/tvshows/' + tvshow._id);
-        };
       }
     };
   }]);

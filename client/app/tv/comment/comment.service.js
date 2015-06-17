@@ -62,6 +62,15 @@ angular.module('critiqueApp')
           }, reject);
         });
       });
+    },
+
+    removeAllCommentsFromShow: function(showId) {
+      return $q(function(resolve, reject) {
+      
+        reject('Not implemented yet!');
+
+        // resolve();
+      });
     }
   };
 }]);

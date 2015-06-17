@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('critiqueApp')
-  .directive('showItem', ['comment', 'Auth', function (Comment, Auth) {
+  .directive('showItem', ['comment', 'Auth', '$http', function (Comment, Auth, $http) {
     return {
       templateUrl: 'app/tv/showItem/showItem.html',
       restrict: 'E',
@@ -48,6 +48,22 @@ angular.module('critiqueApp')
 
         };
 
+        scope.deleteShow = function() {
+          var showID = element.data('id');
+
+          // TODO: It would be highly appropriate to show confirmation dialog before actually doing anything //
+
+          /* We remove all attached comments from the database with this */
+          Comment
+            .removeAllCommentsFromShow(showID)
+            .then(function() {
+              $http.delete('/api/tvshows/' + showID);
+              scope.refreshView();
+            })
+            .catch(function(message) {
+              console.error(message);
+            });
+        };
       }
     };
   }]);

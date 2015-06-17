@@ -1,4 +1,5 @@
 <h2>{{ show.name }}</h2>
+<a href ng-show="isAdmin()" ng-click="deleteShow()">Delete</a>
 <p>{{ show.description }}</p>
 
 <div class="comment-line" ng-repeat="comment in comments">{{ comment.userId | personify }} {{ comment.comment }} <a href ng-show="isOwnComment(comment.userId)" ng-click="removeComment(comment)">(remove)</a></div>
