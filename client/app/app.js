@@ -7,6 +7,7 @@ angular.module('critiqueApp', [
   'btford.socket-io',
   'ui.router'
 ])
+  .constant('_', window._)
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
       .otherwise('/');
