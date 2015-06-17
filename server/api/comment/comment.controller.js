@@ -63,6 +63,14 @@ exports.findbyshow = function(req, res) {
   });
 };
 
+exports.destroybyshow = function(req, res) {
+  Comment.remove({ 'showId': req.params.id }, function(err) {
+    if (err) { return handleError(res, err); }
+    return res.send(204);
+  })
+
+}
+
 function handleError(res, err) {
   return res.send(500, err);
 }

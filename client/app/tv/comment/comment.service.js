@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('critiqueApp')
-.factory('comment', ['$resource', '$q', function ($resource, $q) {
+.factory('comment', ['$resource', '$q', '$http', function ($resource, $q, $http) {
 
   var CommentResource = $resource('api/comments/:by/:id', { by: '@by', id: '@id' }, {});
   var Comments = [];
@@ -66,10 +66,9 @@ angular.module('critiqueApp')
 
     removeAllCommentsFromShow: function(showId) {
       return $q(function(resolve, reject) {
-      
-        reject('Not implemented yet!');
-
-        // resolve();
+        $http.delete('api/comments/show/' + showId)
+          .success(resolve)
+          .error(reject);
       });
     }
   };
