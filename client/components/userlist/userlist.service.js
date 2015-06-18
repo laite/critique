@@ -4,8 +4,12 @@ angular.module('critiqueApp')
   .factory('userlist', ['$http', function ($http) {
 
     var userNames = {};
+    var refreshed = false;
 
     function _refreshNames() {
+
+      refreshed = true; // we set refresh true even when the request is still pending
+
       $http
         .get('api/users/names')
         .success(function(data) {
@@ -23,6 +27,11 @@ angular.module('critiqueApp')
       },
       refreshNames: function() {
         _refreshNames();
+      },
+      refreshOnce: function() {
+        if (!refreshed) {
+          _refreshNames();
+        }
       }
     };
   }]);

@@ -21,7 +21,7 @@ describe('Filter: personify', function () {
 
   });
 
-  it('should personify User', function () {
+  it('should personify User by Id', function () {
     $httpBackend.flush();
     expect(personify(1)).toBe('User');
   });
