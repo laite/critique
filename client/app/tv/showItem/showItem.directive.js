@@ -7,7 +7,7 @@ angular.module('critiqueApp')
       restrict: 'E',
       link: function (scope, element) {
 
-        var resetComments = function() {
+        scope.resetComments = function() {
           // Load the comments
           scope.comments = Comment.getComments(scope.show._id);
 
@@ -15,7 +15,7 @@ angular.module('critiqueApp')
           scope.showCommentbox = false;
         };
 
-        resetComments();
+        scope.resetComments();
 
         scope.toggleInput = function() {
           scope.showCommentbox = !scope.showCommentbox;
@@ -34,7 +34,7 @@ angular.module('critiqueApp')
 
           Comment
             .saveNew({ showId: showId, comment: commentText, userId: userId })
-            .then(resetComments);
+            .then(scope.resetComments);
 
           element.find('input').val('');
         };
@@ -44,7 +44,7 @@ angular.module('critiqueApp')
 
           Comment
             .removeComment(comment._id)
-            .then(resetComments);
+            .then(scope.resetComments);
 
         };
 
